@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Fridge | Pick & Plate</title>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+
+/* GENERAL */
+
+:root {
+    --bg: #0b0b0b;
+    --card: #171717;
+    --secondary: #222222;
+    --text: #f5f0e8;
+    --muted: #aaa39a;
+    --accent: #c69a6b;
+    --border: #303030;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 7%;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* PAGE INTRO */
+
+.intro {
+    text-align: center;
+    padding: 65px 20px 35px;
+}
+
+.label {
+    color: var(--accent);
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.intro h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 6vw, 65px);
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.intro p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* MAIN LAYOUT */
+
+.fridge-container {
+    max-width: 1100px;
+    margin: 30px auto 90px;
+    padding: 0 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+/* FRIDGE */
+
+.fridge {
+    background: #181818;
+    border: 8px solid #292929;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.fridge-top {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.fridge-top h2 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.fridge-top p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* SHELVES */
+
+.shelf {
+    background: #242424;
+    border-bottom: 7px solid #4a4037;
+    min-height: 125px;
+    padding: 15px;
+    margin-bottom: 18px;
+    border-radius: 7px;
+}
+
+.shelf-title {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+    text-transform: uppercase;
+}
+
+.ingredient-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 45px;
+}
+
+.ingredient {
+    background: #33302c;
+    border: 1px solid #4b4035;
+    border-radius: 9px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #f5f0e8;
+}
+
+.ingredient button {
+    border: none;
+    background: none;
+    color: #c69a6b;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.empty {
+    color: #777;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* ADD INGREDIENT PANEL */
+
+.add-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 28px;
+}
+
+.add-panel h2 {
+    font-family: Georgia, serif;
+    font-size: 29px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.add-panel > p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+/* INPUT */
+
+.input-area {
+    display: flex;
+    gap: 8px;
+}
+
+.input-area input {
+    width: 100%;
+    padding: 14px;
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+}
+
+.input-area input:focus {
+    border-color: var(--accent);
+}
+
+.add-btn {
+    padding: 13px 18px;
+    background: var(--accent);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* SUGGESTIONS */
+
+.suggestions {
+    margin-top: 25px;
+}
+
+.suggestions h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+    color: var(--muted);
+}
+
+.suggestion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.suggestion {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 13px;
+    border-radius: 25px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.suggestion:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* BUTTONS */
+
+.clear-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 10px 15px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.find-btn {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 16px;
+    background: var(--accent);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.find-btn:hover {
+    background: #e1bd98;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 7%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 800px) {
+
+    .fridge-container {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+    .fridge-container {
+        padding: 0 15px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">PICK & PLATE.</a>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+        <a href="fridge.html">My Fridge</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="about.html">About Us</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="account.html">Account</a>
+
+    </div>
+
+</nav>
+
+
+<!-- INTRODUCTION -->
+
+<section class="intro">
+
+    <span class="label">THE FRIDGE EXPERIMENT</span>
+
+    <h1>What's in your fridge?</h1>
+
+    <p>
+        A few ingredients, endless possibilities.<br>
+        Let's see what we can make today.
+    </p>
+
+</section>
+
+
+<!-- MAIN SECTION -->
+
+<main class="fridge-container">
+
+
+    <!-- VIRTUAL FRIDGE -->
+
+    <section class="fridge">
+
+        <div class="fridge-top">
+
+            <h2>Your Little Fridge</h2>
+
+            <p>Your ingredients, all in one place.</p>
+
+        </div>
+
+
+        <!-- SHELF 1 -->
+
+        <div class="shelf">
+
+            <div class="shelf-title">Shelf 01 · Dairy & Eggs</div>
+
+            <div class="ingredient-list" id="dairyList">
+
+                <span class="empty">Nothing here yet...</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SHELF 2 -->
+
+        <div class="shelf">
+
+            <div class="shelf-title">Shelf 02 · Vegetables & Fruits</div>
+
+            <div class="ingredient-list" id="produceList">
+
+                <span class="empty">Nothing here yet...</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SHELF 3 -->
+
+        <div class="shelf">
+
+            <div class="shelf-title">Shelf 03 · Other Ingredients</div>
+
+            <div class="ingredient-list" id="otherList">
+
+                <span class="empty">Nothing here yet...</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADD INGREDIENTS -->
+
+    <section class="add-panel">
+
+        <h2>Add to your fridge.</h2>
+
+        <p>
+            Type an ingredient you already have.
+            We'll find a little space for it.
+        </p>
+
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="ingredientInput"
+                placeholder="e.g. Eggs, tomatoes, milk..."
+            >
+
+            <button class="add-btn" onclick="addIngredient()">
+                + Add
+            </button>
+
+        </div>
+
+
+        <!-- QUICK SUGGESTIONS -->
+
+        <div class="suggestions">
+
+            <h3>NEED SOME IDEAS?</h3>
+
+            <div class="suggestion-list">
+
+                <button class="suggestion" onclick="quickAdd('Eggs')">Eggs</button>
+
+                <button class="suggestion" onclick="quickAdd('Milk')">Milk</button>
+
+                <button class="suggestion" onclick="quickAdd('Tomatoes')">Tomatoes</button>
+
+                <button class="suggestion" onclick="quickAdd('Cheese')">Cheese</button>
+
+                <button class="suggestion" onclick="quickAdd('Potatoes')">Potatoes</button>
+
+                <button class="suggestion" onclick="quickAdd('Rice')">Rice</button>
+
+                <button class="suggestion" onclick="quickAdd('Bread')">Bread</button>
+
+                <button class="suggestion" onclick="quickAdd('Onion')">Onion</button>
+
+            </div>
+
+        </div>
+
+
+        <button class="clear-btn" onclick="clearFridge()">
+            Clear all ingredients
+        </button>
+
+
+        <button class="find-btn" onclick="findRecipes()">
+            Find Recipes →
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <a href="index.html" class="logo">PICK & PLATE.</a>
+
+    <p>© 2026 Pick & Plate | Made with a little love.</p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// STORE INGREDIENTS
+
+let ingredients = [];
+
+
+// ADD INGREDIENT
+
+function addIngredient() {
+
+    let input = document.getElementById("ingredientInput");
+
+    let ingredient = input.value.trim();
+
+    if(ingredient === "") {
+
+        alert("Please enter an ingredient!");
+
+        return;
+
+    }
+
+    if(ingredients.some(item =>
+        item.toLowerCase() === ingredient.toLowerCase()
+    )) {
+
+        alert("This ingredient is already in your fridge!");
+
+        return;
+
+    }
+
+    ingredients.push(ingredient);
+
+    input.value = "";
+
+    displayIngredients();
+
+}
+
+
+// QUICK ADD BUTTONS
+
+function quickAdd(ingredient) {
+
+    if(ingredients.some(item =>
+        item.toLowerCase() === ingredient.toLowerCase()
+    )) {
+
+        alert("Already added!");
+
+        return;
+
+    }
+
+    ingredients.push(ingredient);
+
+    displayIngredients();
+
+}
+
+
+// DISPLAY INGREDIENTS
+
+function displayIngredients() {
+
+    let dairy = document.getElementById("dairyList");
+
+    let produce = document.getElementById("produceList");
+
+    let other = document.getElementById("otherList");
+
+
+    dairy.innerHTML = "";
+
+    produce.innerHTML = "";
+
+    other.innerHTML = "";
+
+
+    ingredients.forEach(function(item, index) {
+
+        let name = item.toLowerCase();
+
+        let category = "otherList";
+
+        if(["milk", "cheese", "butter", "yogurt",
+            "curd", "cream", "eggs"].includes(name)) {
+
+            category = "dairyList";
+
+        }
+
+        else if(["tomatoes", "potatoes", "onion",
+            "carrot", "apple", "banana", "spinach",
+            "cucumber", "capsicum", "lettuce"].includes(name)) {
+
+            category = "produceList";
+
+        }
+
+
+        let container = document.getElementById(category);
+
+        let itemBox = document.createElement("div");
+
+        itemBox.className = "ingredient";
+
+
+        let itemName = document.createElement("span");
+
+        itemName.textContent = 
+        
+        item;
+
+
+        let removeButton = document.createElement("button");
+
+        removeButton.textContent = "×";
+
+        removeButton.onclick = function() {
+
+            removeIngredient(index);
+
+        };
+
+
+        itemBox.appendChild(itemName);
+
+        itemBox.appendChild(removeButton);
+
+        container.appendChild(itemBox);
+
+    });
+
+
+    // SHOW EMPTY MESSAGES
+
+    if(dairy.innerHTML === "") {
+
+        dairy.innerHTML =
+        '<span class="empty">Nothing here yet...</span>';
+
+    }
+
+    if(produce.innerHTML === "") {
+
+        produce.innerHTML =
+        '<span class="empty">Nothing here yet...</span>';
+
+    }
+
+    if(other.innerHTML === "") {
+
+        other.innerHTML =
+        '<span class="empty">Nothing here yet...</span>';
+
+    }
+
+}
+
+
+// REMOVE INGREDIENT
+
+function removeIngredient(index) {
+
+    ingredients.splice(index, 1);
+
+    displayIngredients();
+
+}
+
+
+// CLEAR FRIDGE
+
+function clearFridge() {
+
+    if(ingredients.length === 0) {
+
+        alert("Your fridge is already empty!");
+
+        return;
+
+    }
+
+    let confirmClear = confirm(
+        "Are you sure you want to clear your fridge?"
+    );
+
+    if(confirmClear) {
+
+        ingredients = [];
+
+        displayIngredients();
+
+    }
+
+}
+
+
+// FIND RECIPES
+
+function findRecipes() {
+
+    if(ingredients.length === 0) {
+
+        alert("Add some ingredients first!");
+
+        return;
+
+    }
+
+    let ingredientData = encodeURIComponent(
+        ingredients.join(",")
+    );
+
+    window.location.href =
+    "recipes.html?ingredients=" + ingredientData;
+
+}
+
+
+// ENTER KEY SUPPORT
+
+document.getElementById("ingredientInput")
+.addEventListener("keydown", function(event) {
+
+    if(event.key === "Enter") {
+
+        addIngredient();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

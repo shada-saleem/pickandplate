@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Pick & Plate</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0b;
+    color: #f5f0e8;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 7%;
+    border-bottom: 1px solid #303030;
+}
+
+.logo {
+    color: #c69a6b;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #aaa39a;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #c69a6b;
+}
+
+/* GENERAL */
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* HERO SECTION */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px 90px;
+}
+
+.hero .small-title {
+    color: #c69a6b;
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: #c69a6b;
+}
+
+.hero p {
+    color: #aaa39a;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* OUR STORY */
+
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 65px 0;
+}
+
+.story-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.story-text .small-title {
+    color: #c69a6b;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.story-text h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.story-text p {
+    color: #aaa39a;
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* HOW IT WORKS */
+
+.how-section {
+    padding: 85px 0;
+    text-align: center;
+}
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading .small-title {
+    color: #c69a6b;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #aaa39a;
+    line-height: 1.7;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.step-card {
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 15px;
+    padding: 35px 25px;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    border-color: #c69a6b;
+    transform: translateY(-5px);
+}
+
+.step-number {
+    color: #c69a6b;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.step-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.step-card p {
+    color: #aaa39a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* FEATURES */
+
+.features-section {
+    padding: 70px 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    background: #171717;
+    border: 1px solid #303030;
+    padding: 30px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    border-color: #c69a6b;
+    transform: translateY(-5px);
+}
+
+/* FONT AWESOME ICONS */
+
+.feature-icon {
+    font-size: 30px;
+    color: #c69a6b;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #aaa39a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* CLOSING SECTION */
+
+.closing {
+    text-align: center;
+    padding: 90px 20px;
+    margin: 50px 0 70px;
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 15px;
+}
+
+.closing h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.closing p {
+    color: #aaa39a;
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.explore-btn {
+    display: inline-block;
+    background: #c69a6b;
+    color: #0b0b0b;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.explore-btn:hover {
+    background: #dfb68a;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #303030;
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    font-size: 13px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 850px) {
+
+    .story {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .steps,
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav a {
+        margin-left: 10px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .steps,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">PICK & PLATE</a>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="fridge.html">My Fridge</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="about.html">About</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="account.html">Account</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="small-title">A LITTLE ABOUT US</div>
+
+    <h1>
+        Good food begins<br>
+        with a little <span>inspiration.</span>
+    </h1>
+
+    <p>
+        Welcome to Pick & Plate, a place where everyday ingredients
+        turn into something delicious. We're here to make deciding
+        what to eat a little easier and a lot more exciting.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+    <!-- OUR STORY -->
+
+    <section class="story">
+
+        <div class="story-image">
+
+            <img
+            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=900"
+            alt="Food preparation in a kitchen">
+
+        </div>
+
+        <div class="story-text">
+
+            <div class="small-title">OUR STORY</div>
+
+            <h2>Not sure what to cook? We've got you.</h2>
+
+            <p>
+                We've all been there. Opening the fridge, looking at
+                everything inside, and still having absolutely no idea
+                what to make.
+            </p>
+
+            <p>
+                Pick & Plate was created to make that everyday decision
+                easier. Instead of wondering what to eat, discover
+                recipes based on the ingredients you already have,
+                the things you're craving, and the time you can spare.
+            </p>
+
+            <p>
+                Because good food doesn't always need complicated plans.
+                Sometimes, all you need is a little inspiration.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section class="how-section">
+
+        <div class="section-heading">
+
+            <div class="small-title">THE SIMPLE WAY</div>
+
+            <h2>How Pick & Plate Works</h2>
+
+            <p>Three simple steps between you and your next meal.</p>
+
+        </div>
+
+        <div class="steps">
+
+            <div class="step-card">
+
+                <div class="step-number">01</div>
+
+                <h3>Check Your Fridge</h3>
+
+                <p>
+                    Add the ingredients you already have in your kitchen
+                    using our My Fridge feature.
+                </p>
+
+            </div>
+
+
+            <div class="step-card">
+
+                <div class="step-number">02</div>
+
+                <h3>Find Your Recipe</h3>
+
+                <p>
+                    Explore recipes, search for dishes and discover
+                    something that matches your preferences.
+                </p>
+
+            </div>
+
+
+            <div class="step-card">
+
+                <div class="step-number">03</div>
+
+                <h3>Save & Enjoy</h3>
+
+                <p>
+                    Save the recipes you love to your favourites
+                    and come back to them whenever you like.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OUR FEATURES -->
+
+    <section class="features-section">
+
+        <div class="section-heading">
+
+            <div class="small-title">WHAT MAKES US DIFFERENT</div>
+
+            <h2>A little something for everyone.</h2>
+
+            <p>Everything you need to make your next food decision easier.</p>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-carrot"></i>
+                </div>
+
+                <h3>My Fridge</h3>
+
+                <p>
+                    Keep track of your available ingredients and
+                    discover recipes that make use of what you have.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <h3>Recipe Finder</h3>
+
+                <p>
+                    Explore different dishes using search, categories
+                    and filters that match your preferences.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <h3>Favourites</h3>
+
+                <p>
+                    Save the recipes you love and keep your personal
+                    collection of delicious ideas in one place.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLOSING SECTION -->
+
+    <section class="closing">
+
+        <h2>So, what's cooking?</h2>
+
+        <p>
+            Your next favourite recipe might be closer than you think.
+            Let's find it.
+        </p>
+
+        <a href="recipes.html" class="explore-btn">
+            Explore Recipes →
+        </a>
+
+    </section>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    PICK & PLATE · Made for the love of good food.
+
+</footer>
+
+</body>
+</html>

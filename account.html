@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account | Pick & Plate</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0b;
+    color: #f5f0e8;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid #303030;
+}
+
+.logo {
+    color: #c69a6b;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #aaa39a;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #c69a6b;
+}
+
+/* MAIN SECTION */
+
+.container {
+    width: 90%;
+    max-width: 550px;
+    margin: 65px auto;
+    padding: 35px;
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 12px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.heading h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.heading p {
+    color: #aaa39a;
+    font-size: 14px;
+}
+
+/* FORM SWITCH BUTTONS */
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 12px 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: #aaa39a;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.tabs button.active {
+    background: #c69a6b;
+    color: #171717;
+    border-color: #c69a6b;
+    font-weight: bold;
+}
+
+/* FORM */
+
+.account-form {
+    display: none;
+}
+
+.account-form.active {
+    display: block;
+}
+
+.account-form h2 {
+    margin-bottom: 8px;
+    font-size: 23px;
+}
+
+.form-description {
+    color: #aaa39a;
+    font-size: 13px;
+    margin-bottom: 23px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 13px;
+    color: #ddd3c8;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #f5f0e8;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #c69a6b;
+}
+
+select option {
+    background: #222;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #c69a6b;
+    color: #171717;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #d8ad82;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #c69a6b;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    border-top: 1px solid #303030;
+    font-size: 12px;
+}
+
+@media(max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav a {
+        margin: 0 6px;
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 23px;
+        margin: 35px auto;
+    }
+
+    .tabs button {
+        font-size: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="logo">PICK & PLATE</div>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="fridge.html">My Fridge</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="about.html">About</a>
+        <a href="account.html">Account</a>
+    </div>
+</nav>
+
+
+<!-- ACCOUNT SECTION -->
+
+<div class="container">
+
+    <div class="heading">
+        <h1>Your Account</h1>
+        <p>Good food starts with Pick & Plate.</p>
+    </div>
+
+    <!-- FORM TABS -->
+
+    <div class="tabs">
+        <button class="active" onclick="showForm('login', this)">
+            Login
+        </button>
+
+        <button onclick="showForm('signup', this)">
+            Sign Up
+        </button>
+
+        <button onclick="showForm('registration', this)">
+            Register
+        </button>
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+    <form class="account-form active" id="login"
+          onsubmit="loginUser(event)">
+
+        <h2>Welcome Back!</h2>
+        <p class="form-description">
+            Login to continue exploring recipes.
+        </p>
+
+        <label>Email Address</label>
+        <input type="email" id="loginEmail"
+               placeholder="Enter your email" required>
+
+        <label>Password</label>
+        <input type="password" id="loginPassword"
+               placeholder="Enter your password" required>
+
+        <button type="submit" class="submit-btn">
+            LOGIN
+        </button>
+
+        <p class="message" id="loginMessage"></p>
+    </form>
+
+
+    <!-- SIGN UP FORM -->
+
+    <form class="account-form" id="signup"
+          onsubmit="signupUser(event)">
+
+        <h2>Create an Account</h2>
+        <p class="form-description">
+            Join Pick & Plate and discover something delicious.
+        </p>
+
+        <label>Full Name</label>
+        <input type="text" id="signupName"
+               placeholder="Enter your name" required>
+
+        <label>Email Address</label>
+        <input type="email" id="signupEmail"
+               placeholder="Enter your email" required>
+
+        <label>Password</label>
+        <input type="password" id="signupPassword"
+               placeholder="Create a password"
+               minlength="6" required>
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword"
+               placeholder="Re-enter your password"
+               minlength="6" required>
+
+        <button type="submit" class="submit-btn">
+            CREATE ACCOUNT
+        </button>
+
+        <p class="message" id="signupMessage"></p>
+    </form>
+
+
+    <!-- REGISTRATION FORM -->
+
+    <form class="account-form" id="registration"
+          onsubmit="registerUser(event)">
+
+        <h2>Register Your Preferences</h2>
+        <p class="form-description">
+            Tell us a little about the food you enjoy.
+        </p>
+
+        <label>Full Name</label>
+        <input type="text" id="regName"
+               placeholder="Enter your name" required>
+
+        <label>Email Address</label>
+        <input type="email" id="regEmail"
+               placeholder="Enter your email" required>
+
+        <label>Favourite Food Category</label>
+        <select id="foodCategory" required>
+            <option value="">Choose a category</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Meals">Meals</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Drinks">Drinks</option>
+        </select>
+
+        <label>Dietary Preference</label>
+        <select id="dietPreference" required>
+            <option value="">Choose your preference</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="No Preference">No Preference</option>
+        </select>
+
+        <label>Cooking Experience</label>
+        <select id="cookingLevel" required>
+            <option value="">Choose your experience</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Experienced">Experienced</option>
+        </select>
+
+        <button type="submit" class="submit-btn">
+            COMPLETE REGISTRATION
+        </button>
+
+        <p class="message" id="registrationMessage"></p>
+    </form>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Pick & Plate | Find something delicious.
+</footer>
+
+
+<script>
+
+// SWITCH BETWEEN FORMS
+
+function showForm(formId, button) {
+
+    let forms = document.querySelectorAll(".account-form");
+    let buttons = document.querySelectorAll(".tabs button");
+
+    forms.forEach(function(form) {
+        form.classList.remove("active");
+    });
+
+    buttons.forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+
+    document.getElementById(formId).classList.add("active");
+
+    button.classList.add("active");
+}
+
+
+// LOGIN FORM
+
+function loginUser(event) {
+
+    event.preventDefault();
+
+    document.getElementById("loginMessage").textContent =
+        "Login form submitted! This is a front-end demo.";
+
+}
+
+
+// SIGN UP FORM
+
+function signupUser(event) {
+
+    event.preventDefault();
+
+    let password =
+        document.getElementById("signupPassword").value;
+
+    let confirm =
+        document.getElementById("confirmPassword").value;
+
+    if (password !== confirm) {
+
+        document.getElementById("signupMessage").textContent =
+            "Passwords do not match!";
+
+        return;
+    }
+
+    document.getElementById("signupMessage").textContent =
+        "Account form submitted successfully!";
+
+    document.getElementById("signup").reset();
+}
+
+
+// REGISTRATION FORM
+
+function registerUser(event) {
+
+    event.preventDefault();
+
+    document.getElementById("registrationMessage").textContent =
+        "Registration completed successfully!";
+
+    document.getElementById("registration").reset();
+}
+
+</script>
+
+</body>
+</html>

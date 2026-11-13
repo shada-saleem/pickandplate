@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator | Pick & Plate</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: #f5f0e8;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 7%;
+            border-bottom: 1px solid #303030;
+        }
+
+        .logo {
+            color: #c69a6b;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #aaa39a;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #c69a6b;
+        }
+
+        .container {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #aaa39a;
+            margin-bottom: 35px;
+        }
+
+        .calculator {
+            background: #171717;
+            border: 1px solid #303030;
+            border-radius: 18px;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: #222;
+            border: 1px solid #383838;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #c69a6b;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #c69a6b;
+            color: #0b0b0b;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #dfb68a;
+        }
+
+        .clear-btn {
+            background: #303030;
+            color: white;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 18px;
+            background: #222;
+            border-radius: 8px;
+            color: #c69a6b;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            border-top: 1px solid #303030;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">PICK & PLATE</a>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="fridge.html">My Fridge</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="calculator.html">Calculator</a>
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1>Simple Calculator</h1>
+        <p class="subtitle">A little calculation never hurts.</p>
+
+        <div class="calculator">
+
+            <input type="number" id="n1"
+                   placeholder="Enter first number">
+
+            <input type="number" id="n2"
+                   placeholder="Enter second number">
+
+            <div class="buttons">
+
+                <button onclick="calculate('+')">
+                    Addition (+)
+                </button>
+
+                <button onclick="calculate('-')">
+                    Subtraction (-)
+                </button>
+
+                <button onclick="calculate('*')">
+                    Multiplication (*)
+                </button>
+
+                <button onclick="calculate('/')">
+                    Division (/)
+                </button>
+
+            </div>
+
+            <button class="clear-btn" onclick="clearCalculator()">
+                Clear
+            </button>
+
+            <div id="result">
+                Result will appear here
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        PICK & PLATE · Find something delicious.
+    </footer>
+
+    <script>
+
+        function calculate(op) {
+
+            let a = document.getElementById("n1").value;
+            let b = document.getElementById("n2").value;
+
+            let result = document.getElementById("result");
+
+            if (a === "" || b === "") {
+                result.innerHTML = "Error: Enter both numbers";
+                return;
+            }
+
+            a = Number(a);
+            b = Number(b);
+
+            if (a < -1000 || a > 1000 ||
+                b < -1000 || b > 1000) {
+
+                result.innerHTML =
+                    "Error: Enter numbers between -1000 and 1000";
+
+                return;
+            }
+
+            if (op === '+') {
+                result.innerHTML = "Sum = " + (a + b);
+            }
+
+            else if (op === '-') {
+                result.innerHTML = "Difference = " + (a - b);
+            }
+
+            else if (op === '*') {
+                result.innerHTML = "Product = " + (a * b);
+            }
+
+            else if (op === '/') {
+
+                if (b === 0) {
+                    result.innerHTML =
+                        "Error: Cannot divide by zero";
+                }
+
+                else {
+                    result.innerHTML = "Quotient = " + (a / b);
+                }
+
+            }
+
+        }
+
+        function clearCalculator() {
+
+            document.getElementById("n1").value = "";
+            document.getElementById("n2").value = "";
+
+            document.getElementById("result").innerHTML =
+                "Result will appear here";
+
+        }
+
+    </script>
+
+</body>
+</html>

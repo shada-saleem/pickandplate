@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pick & Plate | Find Your Next Favourite</title>
+
+<!-- LUCIDE ICONS -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+
+/* ================= GENERAL ================= */
+
+:root {
+    --bg: #0b0b0b;
+    --card: #171717;
+    --secondary: #222222;
+    --text: #f5f0e8;
+    --muted: #aaa39a;
+    --accent: #c69a6b;
+    --border: #303030;
+}
+
+body.light {
+    --bg: #f5f0e8;
+    --card: #ffffff;
+    --secondary: #e9dfd2;
+    --text: #211c17;
+    --muted: #766b60;
+    --accent: #91613e;
+    --border: #ded2c5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ================= NAVIGATION ================= */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 7%;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: var(--text);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.theme-btn {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 30px;
+    font-size: 17px;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 540px;
+    margin: 30px 5%;
+    border-radius: 15px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.75)
+    ),
+    url("image/hero.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero .small-text {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #d8b18a;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(45px, 8vw, 100px);
+    letter-spacing: 5px;
+    color: #fff8ef;
+}
+
+.hero p {
+    max-width: 500px;
+    margin-top: 20px;
+    color: #e5d9cc;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.primary-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #c69a6b;
+    color: #111;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #e1bd98;
+    transform: translateY(-3px);
+}
+
+/* ================= INTRODUCTION ================= */
+
+.intro {
+    max-width: 850px;
+    margin: 100px auto;
+    padding: 0 25px;
+    text-align: center;
+}
+
+.section-label {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.intro h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 5vw, 55px);
+    margin: 20px 0;
+    font-weight: normal;
+}
+
+.intro p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+/* ================= CRAVINGS ================= */
+
+.cravings {
+    padding: 50px 8%;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    margin-top: 15px;
+    font-weight: normal;
+}
+
+.section-heading p {
+    color: var(--muted);
+    margin-top: 12px;
+}
+
+.craving-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.craving {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.craving:hover {
+    background: var(--secondary);
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.craving-icon {
+    color: var(--accent);
+    margin-bottom: 18px;
+}
+
+.craving-icon svg {
+    width: 30px;
+    height: 30px;
+    stroke-width: 1.5;
+}
+
+.craving h3 {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.craving p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* ================= FEATURE CARDS ================= */
+
+.features {
+    padding: 90px 8%;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 25px;
+}
+
+.feature-card {
+    min-height: 400px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.leftovers {
+    background-image:
+    linear-gradient(transparent, rgba(0,0,0,0.9)),
+    url("image/leftovers.png");
+}
+
+.explore {
+    background-image:
+    linear-gradient(transparent, rgba(0,0,0,0.9)),
+    url("image/explore.png");
+}
+
+.feature-content {
+    padding: 35px;
+    color: white;
+}
+
+.feature-content .section-label {
+    color: #d8b18a;
+}
+
+.feature-content h2 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    margin: 15px 0;
+    font-weight: normal;
+}
+
+.feature-content p {
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.feature-link {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #c69a6b;
+    color: #111;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+/* ================= POPULAR RECIPES ================= */
+
+.popular {
+    padding: 70px 8%;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.recipe-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.recipe-info {
+    padding: 20px;
+}
+
+.recipe-info h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.recipe-info p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.recipe-info a {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--accent);
+    font-size: 14px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 8%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ================= CHATBOT ================= */
+
+.chat-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent);
+    color: #111;
+    font-size: 25px;
+    z-index: 1000;
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 320px;
+    max-width: calc(100vw - 40px);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.chat-header {
+    padding: 18px;
+    background: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-header h3 {
+    color: var(--accent);
+}
+
+.chat-header button {
+    border: none;
+    background: none;
+    color: var(--text);
+    font-size: 20px;
+}
+
+.chat-messages {
+    height: 260px;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 90%;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.bot-message {
+    background: var(--secondary);
+    align-self: flex-start;
+}
+
+.user-message {
+    background: var(--accent);
+    color: #111;
+    align-self: flex-end;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid var(--border);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 15px;
+    background: var(--card);
+    border: none;
+    color: var(--text);
+    outline: none;
+}
+
+.chat-input button {
+    padding: 15px;
+    background: var(--accent);
+    border: none;
+    color: #111;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .craving-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recipe-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .hero {
+        min-height: 400px;
+        margin: 20px 4%;
+    }
+
+    .hero h1 {
+        letter-spacing: 2px;
+    }
+
+    .craving-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-content h2 {
+        font-size: 30px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">PICK & PLATE.</a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="fridge.html">My Fridge</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="favourites.html">Favourites</a>
+        <a href="about.html">About Us</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="account.html">Account</a>
+
+        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
+            ☀️
+        </button>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <p class="small-text">A LITTLE FOOD INSPIRATION</p>
+
+    <h1>PICK & PLATE</h1>
+
+    <p>
+        Your cravings called.<br>
+        Let's find something worth cooking.
+    </p>
+
+    <a href="recipes.html" class="primary-btn">
+        Find Your Next Favourite →
+    </a>
+
+</section>
+
+
+<!-- INTRODUCTION -->
+
+<section class="intro">
+
+    <span class="section-label">WELCOME TO PICK & PLATE</span>
+
+    <h2>Less wondering.<br>More cooking.</h2>
+
+    <p>
+        Pick & Plate is your little corner of food inspiration.
+        Discover recipes that match your cravings, turn leftover
+        ingredients into something delicious, and find your next
+        favourite dish without the endless searching.
+    </p>
+
+</section>
+
+
+<!-- CRAVINGS -->
+
+<section class="cravings">
+
+    <div class="section-heading">
+
+        <span class="section-label">LET'S GET COOKING</span>
+
+        <h2>What are we craving?</h2>
+
+        <p>Pick a mood. We'll find something delicious.</p>
+
+    </div>
+
+    <div class="craving-grid">
+
+        <div class="craving" onclick="chooseCategory('snack')">
+
+            <div class="craving-icon">
+                <i data-lucide="cookie"></i>
+            </div>
+
+            <h3>Something Crunchy</h3>
+            <p>Snacks & little bites</p>
+
+        </div>
+
+
+        <div class="craving" onclick="chooseCategory('meal')">
+
+            <div class="craving-icon">
+                <i data-lucide="utensils"></i>
+            </div>
+
+            <h3>Something Filling</h3>
+            <p>Meals worth making</p>
+
+        </div>
+
+
+        <div class="craving" onclick="chooseCategory('dessert')">
+
+            <div class="craving-icon">
+                <i data-lucide="cake-slice"></i>
+            </div>
+
+            <h3>Something Sweet</h3>
+            <p>Desserts & treats</p>
+
+        </div>
+
+
+        <div class="craving" onclick="chooseCategory('drink')">
+
+            <div class="craving-icon">
+                <i data-lucide="glass-water"></i>
+            </div>
+
+            <h3>Something Refreshing</h3>
+            <p>Drinks & coolers</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURE SECTIONS -->
+
+<section class="features">
+
+    <div class="feature-card leftovers">
+
+        <div class="feature-content">
+
+            <span class="section-label">THE FRIDGE EXPERIMENT</span>
+
+            <h2>Good things<br>are already here.</h2>
+
+            <p>
+                Got random ingredients lying around?
+                Let's turn them into something amazing.
+            </p>
+
+            <a href="fridge.html" class="feature-link">
+                Open My Fridge →
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="feature-card explore">
+
+        <div class="feature-content">
+
+            <span class="section-label">A WORLD OF FLAVOURS</span>
+
+            <h2>Something<br>new awaits.</h2>
+
+            <p>
+                Browse, discover, save.
+                Your next favourite might be here.
+            </p>
+
+            <a href="recipes.html" class="feature-link">
+                Explore Recipes →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WORTH A TASTE -->
+
+<section class="popular">
+
+    <div class="section-heading">
+
+        <span class="section-label">A LITTLE INSPIRATION</span>
+
+        <h2>Worth a taste.</h2>
+
+        <p>Little collections for every kind of day.</p>
+
+    </div>
+
+    <div class="recipe-grid">
+
+        <!-- QUICK RECIPES -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=700" alt="Quick recipe inspiration">
+
+            <div class="recipe-info">
+
+                <h3>Ready in 5</h3>
+
+                <p>Super quick recipes for when you're hungry NOW.</p>
+
+                <a href="recipes.html">Find quick recipes →</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- WORLD CUISINES -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700" alt="Dishes from around the world">
+
+            <div class="recipe-info">
+
+                <h3>Around the World</h3>
+
+                <p>Explore interesting dishes from different cuisines.</p>
+
+                <a href="recipes.html">Explore cuisines →</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- WEEKEND RECIPES -->
+
+        <div class="recipe-card">
+
+            <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=700" alt="Weekend cooking inspiration">
+
+            <div class="recipe-info">
+
+                <h3>Made for the Weekend</h3>
+
+                <p>Fun recipes worth spending a little extra time on.</p>
+
+                <a href="recipes.html">Find weekend recipes →</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        <a href="index.html" class="logo">PICK & PLATE.</a>
+        <p style="margin-top:10px;">A little food inspiration, every day.</p>
+    </div>
+
+    <p>© 2026 Pick & Plate | Made with a little love.</p>
+
+    <a href="about.html">About Us →</a>
+
+</footer>
+
+
+<!-- CHATBOT -->
+
+<button class="chat-toggle" onclick="toggleChat()" title="Chat with PlatePal">
+    <i data-lucide="message-circle"></i>
+</button>
+
+<div class="chat-box" id="chatBox">
+
+    <div class="chat-header">
+
+        <div>
+            <h3>PlatePal</h3>
+            <small>Your recipe companion</small>
+        </div>
+
+        <button onclick="toggleChat()">×</button>
+
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+
+        <div class="message bot-message">
+            Hey! I'm PlatePal. Tell me what ingredients you have
+            or what you're craving, and let's find something delicious!
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input type="text" id="chatInput"
+        placeholder="Ask me something..."
+        onkeydown="if(event.key==='Enter') sendMessage()">
+
+        <button onclick="sendMessage()">Send</button>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* ICON INITIALIZATION */
+
+lucide.createIcons();
+
+
+/* THEME TOGGLE */
+
+function toggleTheme() {
+
+    document.body.classList.toggle("light");
+
+    let isLight = document.body.classList.contains("light");
+
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+
+    document.getElementById("themeBtn").innerText =
+    isLight ? "🌙" : "☀️";
+}
+
+window.onload = function() {
+
+    let savedTheme = localStorage.getItem("theme");
+
+    if(savedTheme === "light") {
+        document.body.classList.add("light");
+        document.getElementById("themeBtn").innerText = "🌙";
+    }
+
+};
+
+
+/* CATEGORY NAVIGATION */
+
+function chooseCategory(category) {
+
+    window.location.href =
+    "recipes.html?category=" + category;
+
+}
+
+
+/* CHATBOT */
+
+function toggleChat() {
+
+    let chat = document.getElementById("chatBox");
+
+    if(chat.style.display === "flex") {
+        chat.style.display = "none";
+    } else {
+        chat.style.display = "flex";
+    }
+
+}
+
+
+function sendMessage() {
+
+    let input = document.getElementById("chatInput");
+
+    let message = input.value.trim();
+
+    if(message === "") {
+        return;
+    }
+
+    addMessage(message, "user-message");
+
+    input.value = "";
+
+    setTimeout(function() {
+
+        let reply = getReply(message);
+
+        addMessage(reply, "bot-message");
+
+    }, 500);
+
+}
+
+
+function addMessage(message, className) {
+
+    let messages = document.getElementById("chatMessages");
+
+    let newMessage = document.createElement("div");
+
+    newMessage.className = "message " + className;
+
+    newMessage.textContent = message;
+
+    messages.appendChild(newMessage);
+
+    messages.scrollTop = messages.scrollHeight;
+
+}
+
+
+function getReply(message) {
+
+    message = message.toLowerCase();
+
+    if(message.includes("egg") || message.includes("bread")) {
+        return "You could try a bread omelette, egg sandwich, or French toast! Visit our Recipes page for more ideas.";
+    }
+
+    if(message.includes("sweet") || message.includes("dessert")) {
+        return "Something sweet? How about brownies, pancakes, or a chocolate mug cake?";
+    }
+
+    if(message.includes("chicken")) {
+        return "Chicken pasta, grilled chicken, or a simple chicken stir-fry could be delicious!";
+    }
+
+    if(message.includes("rice")) {
+        return "Try fried rice, rice bowls, or a simple lemon rice!";
+    }
+
+    if(message.includes("hello") || message.includes("hi")) {
+        return "Hey there! What are we cooking today?";
+    }
+
+    if(message.includes("thank")) {
+        return "You're welcome! Happy cooking!";
+    }
+
+    return "That sounds interesting! Try exploring our Recipes page or entering your ingredients in My Fridge for more ideas.";
+}
+
+</script>
+
+</body>
+</html>
